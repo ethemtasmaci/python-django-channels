@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Chat Rooms</title>
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+
+<body>
+    <div style="text-align: center;" class="full-height">
+        <h2>GRUPLAR</h2>
+        <a href="{% url 'logout' %}" style="margin: 20px;">Çıkış Yap</a>
+        <a class="news-chats" href="{% url 'create_room' %}">Yeni Sohbet Oluştur</a>
+
+        {% if user_rooms %}
+        <div class="his-groups-container">
+            {% for room in user_rooms %}
+            <div class="his-groups">
+                <!-- room.id'yi dinamik olarak URL'ye ekliyoruz -->
+                <a href="{% url 'chat_room' room.id %}">ID: {{ room.id }} <br /> Room Name: {{ room.room_name }}</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No rooms available.</p>
+        {% endif %}
+    </div>
+
+    <!-- <script>
+        // Sayfa yüklendiğinde, '#room-name-input' ID'sine sahip input alanına otomatik olarak odaklanır.
+        // Böylece kullanıcı sayfaya gelir gelmez direkt bu alana yazabilir.
+        document.querySelector('#room-name-input').focus();
+
+        // '#room-name-input' alanında bir tuşa basıldığında çalışacak bir fonksiyon tanımlanıyor.
+        document.querySelector('#room-name-input').onkeyup = function (e) {
+            // Eğer basılan tuş "Enter" tuşuysa (klavyede geri dönüş tuşu),
+            // '#room-name-submit' ID'sine sahip düğmeye tıklama işlemi tetiklenir.
+            if (e.key === 'Enter') {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        // '#room-name-submit' ID'sine sahip düğmeye tıklandığında çalışacak bir fonksiyon tanımlanıyor.
+        document.querySelector('#room-name-submit').onclick = function (e) {
+            // İlk olarak, '#room-name-input' alanına girilen değer (oda adı) alınır.
+            var roomName = document.querySelector('#room-name-input').value;
+
+            // Ardından, tarayıcı bu oda adına sahip yeni bir URL'ye yönlendirilir.
+            // Örneğin, oda adı "example" ise, kullanıcı 'www.siteniz.com/example/' sayfasına yönlendirilir.
+            window.location.pathname = '/' + roomName + '/';
+        };
+
+    </script> -->
+</body>
+
+</html>

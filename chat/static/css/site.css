@@ -1,0 +1,46 @@
+.his-groups-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Gruplar arasında boşluk */
+    margin-top: 30px;
+}
+
+.his-groups {
+    width: 80%;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    background-color: gray;
+    text-align: left;
+}
+
+.his-groups a {
+    width: 50%;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-chats {
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: lightgray;
+    border-radius: 12px;    
+    transition: background-color 0.3s ease;
+}
+
+.news-chats:hover {
+    background-color: darkgray;
+}
+
+.full-height {
+    width: 100%;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

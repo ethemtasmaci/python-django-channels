@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>New Room</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>New Room</h2>
+        <form method="POST" action="{% url 'create_room' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="roomName" class="form-label">Sohbet Grubunun Adı Nedir</label>
+                <input type="text" class="form-control" id="roomName" name="room_name">
+            </div>
+            <div class="mb-3">
+                <label for="otherUser" class="form-label">Kimin İle Sohbet Etmek İstiyorsun</label>
+                <select class="form-select" aria-label="Default select example" name="second_user_id" id="otherUser">
+                    <option selected disabled>Seçiniz</option>
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Sohbete Başla</button>
+        </form>
+    </div>
+</body>
+
+</html>
